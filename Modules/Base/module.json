@@ -1,0 +1,11 @@
+{
+    "name": "Base",
+    "alias": "base",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Base\\App\\Providers\\BaseServiceProvider"
+    ],
+    "files": []
+}

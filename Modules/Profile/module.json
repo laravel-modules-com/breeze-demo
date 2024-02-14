@@ -1,0 +1,11 @@
+{
+    "name": "Profile",
+    "alias": "profile",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Profile\\App\\Providers\\ProfileServiceProvider"
+    ],
+    "files": []
+}
