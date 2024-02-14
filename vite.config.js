@@ -3,10 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import collectModuleAssetsPaths from './vite-module-loader.js';
 
 async function getConfig() {
-    const paths = [
-        'resources/css/app.css',
-        'resources/js/app.js',
-    ];
+    const paths = [];
     const allPaths = await collectModuleAssetsPaths(paths, 'Modules');
 
     return defineConfig({

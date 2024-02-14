@@ -27,7 +27,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path('vendor/nwidart/laravel-modules/src/Commands/stubs'),
+        'path' => base_path('stubs/nwidart-stubs'),
         'files' => [
             'routes/web' => 'routes/web.php',
             'routes/api' => 'routes/api.php',
@@ -58,7 +58,7 @@ return [
                 'PROVIDER_NAMESPACE',
             ],
         ],
-        'gitkeep' => true,
+        'gitkeep' => false,
     ],
     'paths' => [
         /*
@@ -117,8 +117,8 @@ return [
             'assets' => ['path' => 'resources/assets', 'generate' => false],
             'lang' => ['path' => 'lang', 'generate' => false],
             'views' => ['path' => 'resources/views', 'generate' => true],
-            'test' => ['path' => 'tests/Unit', 'generate' => false],
-            'test-feature' => ['path' => 'tests/Feature', 'generate' => false],
+            'test' => ['path' => 'Tests/Unit', 'generate' => false],
+            'test-feature' => ['path' => 'Tests/Feature', 'generate' => false],
             'repository' => ['path' => 'App/Repositories', 'generate' => false],
             'event' => ['path' => 'App/Events', 'generate' => false],
             'listener' => ['path' => 'App/Listeners', 'generate' => false],
@@ -173,10 +173,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'dcblogdev',
         'author' => [
-            'name' => 'Nicolas Widart',
-            'email' => 'n.widart@gmail.com',
+            'name' => 'David Carr',
+            'email' => 'dave@dcblog.dev',
         ],
         'composer-output' => false,
     ],
