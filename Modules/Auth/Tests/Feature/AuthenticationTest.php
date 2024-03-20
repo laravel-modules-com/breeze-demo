@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Tests\TestCase;
 
 use function Pest\Laravel\assertAuthenticated;
@@ -9,7 +8,7 @@ use function Pest\Laravel\assertGuest;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-uses(TestCase::class)->in(__DIR__);
+uses(TestCase::class);
 
 test('login screen can be rendered', function () {
     get('/login')->assertOk();
@@ -21,7 +20,7 @@ test('users can authenticate using the login screen', function () {
     post('/login', [
         'email' => $user->email,
         'password' => 'password',
-    ])->assertRedirect(RouteServiceProvider::HOME);
+    ])->assertRedirect(route('dashboard'));
 
     assertAuthenticated();
 });
