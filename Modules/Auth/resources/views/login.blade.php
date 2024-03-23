@@ -1,4 +1,4 @@
-<x-base::guest-layout>
+<x-base::layouts.guest>
     <!-- Session Status -->
     <x-base::auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +44,4 @@
             </x-base::primary-button>
         </div>
     </form>
-</x-base::guest-layout>
+</x-base::layouts.guest>

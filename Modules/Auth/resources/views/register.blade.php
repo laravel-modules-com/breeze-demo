@@ -1,4 +1,4 @@
-<x-base::guest-layout>
+<x-base::layouts.guest>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +49,4 @@
             </x-base::primary-button>
         </div>
     </form>
-</x-base::guest-layout>
+</x-base::layouts.guest>>

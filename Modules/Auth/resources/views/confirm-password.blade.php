@@ -1,4 +1,4 @@
-<x-base::guest-layout>
+<x-base::layouts.guest>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
@@ -24,4 +24,4 @@
             </x-base::primary-button>
         </div>
     </form>
-</x-base::guest-layout>
+</x-base::layouts.guest>
