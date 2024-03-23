@@ -1,5 +1,5 @@
 {
-    "Auth": true,
     "Base": true,
-    "Profile": true
+    "Profile": true,
+    "Auth": true
 }
