@@ -11,6 +11,9 @@ use function Pest\Laravel\post;
 uses(TestCase::class);
 
 test('login screen can be rendered', function () {
+
+    $this->withoutExceptionHandling();
+
     get('/login')->assertOk();
 });
 
