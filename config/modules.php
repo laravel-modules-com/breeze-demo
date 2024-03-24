@@ -199,10 +199,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'dcblogdev',
+        'vendor' => env('MODULES_VENDOR', 'nwidart'),
         'author' => [
-            'name' => 'David Carr',
-            'email' => 'dave@dcblog.dev',
+            'name' => env('MODULES_NAME', 'Nicolas Widart'),
+            'email' => env('MODULES_EMAIL', 'n.widart@gmail.com'),
         ],
         'composer-output' => false,
     ],
