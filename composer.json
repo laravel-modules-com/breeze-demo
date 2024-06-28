@@ -10,8 +10,14 @@
         "laravel/framework": "^11.5",
         "laravel/sanctum": "^4.0.2",
         "laravel/tinker": "^2.9",
-        "nwidart/laravel-modules": "^11.0.8"
+        "nwidart/laravel-modules": "@dev"
     },
+    "repositories": [
+        {
+          "type": "path",
+          "url": "../../packages/laravel-modules"
+        }
+    ],
     "require-dev": {
         "larastan/larastan": "^2.9.5",
         "laravel/pint": "^1.15.2",
