@@ -6,32 +6,22 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "dcblogdev/laravel-module-generator": "@dev",
-        "laravel/framework": "^11.5",
-        "laravel/sanctum": "^4.0.2",
-        "laravel/tinker": "^2.9",
-        "nwidart/laravel-modules": "@dev"
+        "dcblogdev/laravel-module-generator": "^2.0.4",
+        "laravel/framework": "^11.32",
+        "laravel/sanctum": "^4.0.3",
+        "laravel/tinker": "^2.10",
+        "nwidart/laravel-modules": "^11.1.6"
     },
-    "repositories": [
-        {
-          "type": "path",
-          "url": "../../packages/laravel-modules"
-        },
-        {
-          "type": "path",
-          "url": "../../packages/laravel-module-generator"
-        }
-    ],
     "require-dev": {
-        "larastan/larastan": "^2.9.5",
-        "laravel/pint": "^1.15.2",
-        "fakerphp/faker": "^1.23.1",
-        "laravel/sail": "^1.29.1",
-        "mockery/mockery": "^1.6.11",
-        "nunomaduro/collision": "^8.1.1",
-        "pestphp/pest": "^2.34.7",
+        "larastan/larastan": "^2.9.11",
+        "laravel/pint": "^1.18.1",
+        "fakerphp/faker": "^1.24.0",
+        "laravel/sail": "^1.38.0",
+        "mockery/mockery": "^1.6.12",
+        "nunomaduro/collision": "^8.5.0",
+        "pestphp/pest": "^2.36.0",
         "pestphp/pest-plugin-laravel": "^2.4",
-        "spatie/laravel-ignition": "^2.6"
+        "spatie/laravel-ignition": "^2.8"
     },
     "autoload": {
         "psr-4": {

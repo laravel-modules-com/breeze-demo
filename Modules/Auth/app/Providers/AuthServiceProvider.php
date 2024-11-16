@@ -4,6 +4,8 @@ namespace Modules\Auth\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -72,8 +74,23 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerConfig(): void
     {
-        $this->publishes([module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php')], 'config');
-        $this->mergeConfigFrom(module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower);
+        $relativeConfigPath = config('modules.paths.generator.config.path');
+        $configPath = module_path($this->moduleName, $relativeConfigPath);
+
+        if (is_dir($configPath)) {
+            $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($configPath));
+
+            foreach ($iterator as $file) {
+                if ($file->isFile() && $file->getExtension() === 'php') {
+                    $relativePath = str_replace($configPath . DIRECTORY_SEPARATOR, '', $file->getPathname());
+                    $configKey = $this->moduleName . '.' . str_replace([DIRECTORY_SEPARATOR, '.php'], ['.', ''], $relativePath);
+                    $key = ($relativePath === 'config.php') ? $this->moduleName : $configKey;
+
+                    $this->publishes([$file->getPathname() => config_path($relativePath)], 'config');
+                    $this->mergeConfigFrom($file->getPathname(), $key);
+                }
+            }
+        }
     }
 
     /**
