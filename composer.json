@@ -6,11 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "dcblogdev/laravel-module-generator": "v2.0.4",
-        "laravel/framework": "^11.32",
+        "dcblogdev/laravel-module-generator": "v2.0.5",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0.3",
         "laravel/tinker": "^2.10",
-        "nwidart/laravel-modules": "v11.1.6"
+        "nwidart/laravel-modules": "^v12.0.0"
     },
     "require-dev": {
         "larastan/larastan": "^3.0.0",
