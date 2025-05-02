@@ -10,6 +10,7 @@
         "laravel/framework": "^12.1",
         "laravel/sanctum": "^4.0.3",
         "laravel/tinker": "^2.10",
+        "mhmiton/laravel-modules-livewire": "^5.1",
         "nwidart/laravel-modules": "^v12.0.0"
     },
     "require-dev": {
