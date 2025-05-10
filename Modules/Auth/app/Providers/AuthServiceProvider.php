@@ -4,6 +4,7 @@ namespace Modules\Auth\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use InvalidArgumentException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -82,8 +83,13 @@ class AuthServiceProvider extends ServiceProvider
 
             foreach ($iterator as $file) {
                 if ($file->isFile() && $file->getExtension() === 'php') {
-                    $relativePath = str_replace($configPath . DIRECTORY_SEPARATOR, '', $file->getPathname());
-                    $configKey = $this->moduleName . '.' . str_replace([DIRECTORY_SEPARATOR, '.php'], ['.', ''], $relativePath);
+                    $relativePath = str_replace($configPath.DIRECTORY_SEPARATOR, '', $file->getPathname());
+
+                    if (! is_string($relativePath)) {
+                        throw new InvalidArgumentException('Expected string for $relativePath');
+                    }
+
+                    $configKey = $this->moduleName.'.'.str_replace([DIRECTORY_SEPARATOR, '.php'], ['.', ''], $relativePath);
                     $key = ($relativePath === 'config.php') ? $this->moduleName : $configKey;
 
                     $this->publishes([$file->getPathname() => config_path($relativePath)], 'config');
@@ -111,12 +117,19 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array<string>
      */
     public function provides(): array
     {
         return [];
     }
 
+    /**
+     * Get the publishable view paths.
+     *
+     * @return array<string>
+     */
     private function getPublishableViewPaths(): array
     {
         $paths = [];
