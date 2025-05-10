@@ -2,9 +2,9 @@
 
 use Tests\TestCase;
 
-pest()->extend(TestCase::class)
-    ->in(dirname(__DIR__))
-    ->in(dirname(__DIR__).'/Modules')
-    ->beforeEach(function () {
-        Http::preventStrayRequests();
-    });
+uses(TestCase::class)
+    ->in(__DIR__, dirname(__DIR__).'/Modules');
+
+beforeEach(function () {
+    Http::preventStrayRequests();
+});

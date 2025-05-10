@@ -12,8 +12,4 @@ parameters:
         - app/
         - Modules/
 
-    bootstrapFiles:
-        - tests/TestCase.php
-        - tests/Pest.php
-
     level: 8
