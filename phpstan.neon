@@ -12,9 +12,7 @@ parameters:
         - app/
         - Modules/
 
-    scanFiles:
-        #- _ide_helper.php
-        #- _ide_helper_models.php
-        #- .phpstorm.meta.php
+    bootstrapFiles:
+        - tests/TestCase.php
 
     level: 8
