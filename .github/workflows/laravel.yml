@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        php-versions: [8.2', '8.3']
+        php-versions: ['8.3', '8.4']
 
     name: PHP ${{ matrix.php-versions }}
 
@@ -44,8 +44,20 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
 
+    - name: Run migrations
+      run: php artisan migrate --force
+
+    - name: run lint
+      run: ./vendor/bin/pint
+
+    - name: run analyse
+      run: ./vendor/bin/phpstan analyse
+
+    - name: run type coverage
+      run: ./vendor/bin/pest --type-coverage --min=80
+
     - name: Execute tests
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: ./vendor/bin/pest
+      run: ./vendor/bin/pest --parallel
