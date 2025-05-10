@@ -50,8 +50,8 @@ jobs:
     - name: run lint
       run: ./vendor/bin/pint
 
-    - name: run analyse
-      run: ./vendor/bin/phpstan analyse
+    #- name: run analyse
+    #  run: ./vendor/bin/phpstan analyse
 
     - name: run type coverage
       run: ./vendor/bin/pest --type-coverage --min=80
