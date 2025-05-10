@@ -14,5 +14,6 @@ parameters:
 
     bootstrapFiles:
         - tests/TestCase.php
+        - tests/Pest.php
 
     level: 8
