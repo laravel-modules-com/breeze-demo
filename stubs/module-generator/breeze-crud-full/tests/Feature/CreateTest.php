@@ -12,18 +12,18 @@ beforeEach(function () {
     $this->actingAs($user);
 });
 
-test('can see {module} create page', function() {
+test('can see {module} create page', function () {
     get(route('{module}.create'))
-    ->assertOk();
+        ->assertOk();
 });
 
-test('name is required for creating a {module}', function() {
-   post(route('{module}.store'))
-   ->assertSessionHasErrors('name');
+test('name is required for creating a {module}', function () {
+    post(route('{module}.store'))
+        ->assertSessionHasErrors('name');
 });
 
-test('Can create a {model}', function() {
-   post(route('{module}.store'), ['name' => fake()->name])
-   ->assertSessionHasNoErrors()
-   ->assertRedirect(route('{module}.index'));
+test('Can create a {model}', function () {
+    post(route('{module}.store'), ['name' => fake()->name])
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('{module}.index'));
 });

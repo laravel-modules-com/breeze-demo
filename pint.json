@@ -1,0 +1,8 @@
+{
+    "preset": "laravel",
+    "exclude": [
+        "stubs",
+        "resources/stubs",
+        "Modules/**/stubs"
+    ]
+}

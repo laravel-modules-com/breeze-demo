@@ -13,7 +13,16 @@
     <source>
         <include>
             <directory>app</directory>
+            <directory>./Modules</directory>
         </include>
+        <exclude>
+            <directory>./Modules/Migration</directory>
+            <directory>./Modules/*/config</directory>
+            <directory>./Modules/*/database</directory>
+            <directory>./Modules/*/resources</directory>
+            <directory>./Modules/*/routes</directory>
+            <directory>./Modules/*/tests</directory>
+        </exclude>
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>

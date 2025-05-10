@@ -14,14 +14,15 @@
         "nwidart/laravel-modules": "^v12.0.0"
     },
     "require-dev": {
-        "larastan/larastan": "^3.0.0",
-        "laravel/pint": "^1.18.1",
         "fakerphp/faker": "^1.24.0",
+        "larastan/larastan": "^3.4",
+        "laravel/pint": "^1.18.1",
         "laravel/sail": "^1.38.0",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.5.0",
         "pestphp/pest": "^v3.5.1",
         "pestphp/pest-plugin-laravel": "^3.0",
+        "pestphp/pest-plugin-type-coverage": "^3.5",
         "spatie/laravel-ignition": "^2.8"
     },
     "autoload": {
@@ -37,12 +38,20 @@
         }
     },
     "scripts": {
+        "pint": "pint",
+        "stan": "phpstan analyse",
+        "pest": "pest",
+        "pest-type-coverage": "pest --type-coverage",
+        "pest-coverage": "pest --coverage",
+        "test": [
+            "@pint",
+            "@stan",
+            "@pest-type-coverage",
+            "@pest-coverage"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
