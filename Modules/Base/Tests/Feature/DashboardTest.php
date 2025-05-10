@@ -1,12 +1,9 @@
 <?php
 
 use App\Models\User;
-use Tests\TestCase;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
-
-uses(TestCase::class);
 
 test('dashboard redirects to login when user is a guest', function () {
     get('dashboard')->assertRedirect('login');
