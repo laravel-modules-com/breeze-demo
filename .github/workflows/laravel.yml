@@ -18,6 +18,20 @@ jobs:
 
     name: PHP ${{ matrix.php-versions }}
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
     - uses: actions/checkout@v4
 
@@ -30,13 +44,19 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-    - name: Create Database
+    - name: Set environment variables
       run: |
-        mkdir -p database
-        touch database/database.sqlite
+        echo "APP_ENV=testing" >> .env
+        echo "APP_DEBUG=true" >> .env
+        echo "DB_CONNECTION=mysql" >> .env
+        echo "DB_HOST=127.0.0.1" >> .env
+        echo "DB_PORT=3306" >> .env
+        echo "DB_DATABASE=testing" >> .env
+        echo "DB_USERNAME=root" >> .env
+        echo "DB_PASSWORD=password" >> .env
 
     - name: Install Dependencies
-      run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: composer update --no-interaction
 
     - name: Generate key
       run: php artisan key:generate
@@ -50,14 +70,11 @@ jobs:
     - name: run lint
       run: ./vendor/bin/pint
 
-    #- name: run analyse
-    #  run: ./vendor/bin/phpstan analyse
+    - name: run analyse
+      run: ./vendor/bin/phpstan analyse
 
     - name: run type coverage
       run: ./vendor/bin/pest --type-coverage --min=80
 
     - name: Execute tests
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: ./vendor/bin/pest --parallel
+      run: php artisan test --coverage --min=80
